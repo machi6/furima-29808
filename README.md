@@ -20,10 +20,15 @@
 
 ## items テーブル
 
-| Column  | Type   | Options                        |
-| ------- | ------ | ------------------------------ |
-| user_id | int    | null: false, foreign_key: true |
-| price   | int    | null: false                    |
+| Column                        | Type   | Options                        |
+| ----------------------------- | ------ | ------------------------------ |
+| user_id                       | int    | null: false, foreign_key: true |
+| category_id                   | int    | null: false                    |
+| condition_id                  | int    | null: false                    |
+| delivery_fee_payer_id         | int    | null: false                    |
+| shipping_origin_prefecture_id | int    | null: false                    |
+| lead_time_id                  | int    | null: false                    |
+| price                         | int    | null: false                    |
 
 ### Association
 
