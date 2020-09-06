@@ -23,6 +23,8 @@
 | Column                        | Type   | Options                        |
 | ----------------------------- | ------ | ------------------------------ |
 | user_id                       | int    | null: false, foreign_key: true |
+| name                          | string | null: false                    |
+| description                   | string | null: false                    |
 | category_id                   | int    | null: false                    |
 | condition_id                  | int    | null: false                    |
 | delivery_fee_payer_id         | int    | null: false                    |
