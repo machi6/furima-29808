@@ -11,47 +11,50 @@
 | family_name      | string | null: false |
 | first_name_kana  | string | null: false |
 | family_name_kana | string | null: false |
-| birth_year       | int    | null: false |
-| birth_month      | int    | null: false |
-| birth_date       | int    | null: false |
+| birth_day        | date   | null: false |
 
 ### Association
 
 - has_many :items
+- has_many :deals
 
 ## items テーブル
 
-| Column                     | Type   | Options                        |
-| -------------------------- | ------ | ------------------------------ |
-| seller_id                  | int    | null: false, foreign_key: true |
-| category                   | string | null: false                    |
-| condition                  | string | null: false                    |
-| delivery_fee_payer         | string | null: false                    |
-| shipping_origin_prefecture | string | null: false                    |
-| lead_time                  | string | null: false                    |
-| price                      | int    | null: false                    |
+| Column  | Type   | Options                        |
+| ------- | ------ | ------------------------------ |
+| user_id | int    | null: false, foreign_key: true |
+| price   | int    | null: false                    |
 
 ### Association
 
-- belongs_to :users
-- has_one : buyers
+- belongs_to :user
+- has_one :deal
 
-## buyers
+## deals
 
-| Column             | Type   | Options                        |
-| ------------------ | ------ | ------------------------------ |
-| item_id            | int    | null: false, foreign_key: true |
-| credit_card_number | int    | null: false                    |
-| expiration_month   | int    | null: false                    |
-| expiration_year    | int    | null: false                    |
-| security_code      | int    | null: false                    |
-| postal_code        | string | null: false                    |
-| prefecture         | string | null: false                    |
-| city               | string | null: false                    |
-| house_number       | string | null: false                    |
-| building_name      | string | null: false                    |
-| phone_number       | int    | null: false                    |
+| Column  | Type | Options                        |
+| ------- | ---- | ------------------------------ |
+| user_id | int  | null: false, foreign_key: true |
+| item_id | int  | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :buyers
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_address
+
+## shipping_addresses
+
+| Column        | Type   | Options                        |
+| ------------- | ------ | ------------------------------ |
+| deal_id       | int    | null: false, foreign_key: true |
+| postal_code   | string | null: false                    |
+| prefecture    | string | null: false                    |
+| city          | string | null: false                    |
+| house_number  | string | null: false                    |
+| building_name | string |                                |
+| phone_number  | int    | null: false                    |
+
+### Association
+
+- belongs to :deal
