@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   #has_one :deal
 
-  validates :user_id, :name, :price, :description, :category, :condition, :delivery_fee_payer, :lead_time, :shipping_origin_prefecture, presence: true
+  validates :user_id, :name, :price, :description, :category_id, :condition_id, :delivery_fee_payer_id, :lead_time_id, :shipping_origin_prefecture_id, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 300}
   validates :price, numericality: { less_than_or_equal_to: 9999999}
 
