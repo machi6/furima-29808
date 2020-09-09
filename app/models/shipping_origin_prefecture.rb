@@ -1,0 +1,2 @@
+class ShippingOriginPrefecture < ApplicationRecord
+end
