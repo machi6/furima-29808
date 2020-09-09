@@ -1,14 +1,11 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
   #has_one :deal
 
   validates :user_id, :name, :price, :description, :category_id, :condition_id, :delivery_fee_payer_id, :lead_time_id, :shipping_origin_prefecture_id, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 300}
   validates :price, numericality: { less_than_or_equal_to: 9999999}
-
-  with_options format: { with: \d, message: '英字と数字の両方を含めて設定してください' } do
-    validates :password
-  end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
