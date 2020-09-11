@@ -6,6 +6,9 @@ RSpec.describe Item, type: :model do
     @item.image = fixture_file_upload('public/images/test_image.png')
   end
   describe '商品登録' do
+    it 'すべての情報が正しく入力されていれば出品ができること' do
+      expect(@item).to be_valid
+    end
     it '画像は1枚必須であること(ActiveStorageを使用すること)' do
       @item.image = nil
       @item.valid?

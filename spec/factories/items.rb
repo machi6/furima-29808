@@ -9,5 +9,7 @@ FactoryBot.define do
     shipping_origin_prefecture_id { 2 }
     lead_time_id { 2 }
     price { 300 }
+
+    association :user
   end
 end
