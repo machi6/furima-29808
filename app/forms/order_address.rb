@@ -13,7 +13,7 @@ class OrderAddress
 
   def save
     order = Order.create(user: user, item: item)
-    Address.create(:order order.id, :postal_code postal_code, :prefecture_id prefecture_id, :city city, :house_number house_number, :building_name building_name, :phone_number phone_number)
+    Address.create(order: order.id, postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number)
   end
 
 end
