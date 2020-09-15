@@ -11,4 +11,9 @@ class OrderAddress
   validates :house_number,  presence: true
   validates :phone_number,  presence: true, format: {with: /\A[0-9]{,11}\z/, message: "is invalid. Input 11 or less numbers."}
 
+  def save
+    order = Order.create(user: user, item: item)
+    Address.create(:order order.id, :postal_code postal_code, :prefecture_id prefecture_id, :city city, :house_number house_number, :building_name building_name, :phone_number phone_number)
+  end
+
 end
