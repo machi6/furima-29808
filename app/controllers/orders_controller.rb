@@ -1,9 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :move_to_login, only: [:index]
+
   def index
     @item = Item.find(params[:item_id])
-    if @item.order != nil
+    if @item.order != nil || @item.user.id == current_user.id
       redirect_to root_path
     end
+    
     @order = OrderAddress.new
   end
 
@@ -21,6 +24,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 
   def order_params
     params.require(:order_address).permit( :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(user: current_user.id, item: params[:item_id], token: params[:token])
