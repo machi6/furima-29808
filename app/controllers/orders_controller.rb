@@ -35,5 +35,5 @@ class OrdersController < ApplicationController
       card: token_params[:token],
       currency:'jpy'
     )
-end
+  end
 end
