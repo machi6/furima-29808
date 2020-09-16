@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
+    if @item.order != nil
+      redirect_to root_path
+    end
     @order = OrderAddress.new
   end
 
