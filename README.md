@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :deals
+- has_many :orders
 
 ## items テーブル
 
@@ -35,9 +35,9 @@
 ### Association
 
 - belongs_to :user
-- has_one :deal
+- has_one :order
 
-## deals
+## orders
 
 | Column  | Type | Options                        |
 | ------- | ---- | ------------------------------ |
@@ -48,13 +48,13 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :address
 
-## shipping_addresses
+## addresses
 
 | Column        | Type   | Options                        |
 | ------------- | ------ | ------------------------------ |
-| deal_id       | int    | null: false, foreign_key: true |
+| order_id      | int    | null: false, foreign_key: true |
 | postal_code   | string | null: false                    |
 | prefecture_id | int    | null: false                    |
 | city          | string | null: false                    |
@@ -64,4 +64,4 @@
 
 ### Association
 
-- belongs to :deal
+- belongs to :order
